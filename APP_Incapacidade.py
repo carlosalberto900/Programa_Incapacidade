@@ -49,11 +49,11 @@ st.title("PROGRAMA GERADOR DE SENTENÇAS BENEFÍCIOS POR INCAPACIDADE")
 st.write("Criado por: Carlos Alberto Antonio Junior - Juiz Federal - TRF3")
 
 # Input do processo
-processo = st.text_input("Qual o número do processo? (20 dígitos):")
+processo = st.text_input("Qual o número do processo? Digite apenas números, 20 dígitos, sem . - / #:")
 if processo and len(processo) == 20 and processo.isdigit():
     processo_formatado = f"{processo[:7]}-{processo[7:9]}.{processo[9:13]}.{processo[13:14]}.{processo[14:16]}.{processo[16:]}"
 else:
-    st.error("Formato inválido!")
+    st.error("Formato inválido! O número do processo deve ter 20 dígitos numéricos, sem . - / #.")
 
 if 'processo_formatado' in locals():
     st.write(f"Processo: {processo_formatado}")
@@ -68,9 +68,9 @@ if 'processo_formatado' in locals():
             detalhe = st.radio("Por que não existe incapacidade?", [1, 2],
                               format_func=lambda x: "Apenas texto básico da sentença sobre ausencia de incapacidade" if x == 1 else "Além do texto básico, quero redigir maiores esclarecimentos")
             if detalhe == 2:
-                ausencia_incapacidade_redigido = st.text_area("Redija o motivo:")
+                ausencia_incapacidade_redigido = st.text_area("Redija o motivo (será inserido como parágrafo na sentença - iniciar com letra maiúscula e colocar ponto final):")
         else:
-            sem_QS_carencia = st.text_area("Redija o motivo da falta de qualidade/carência:")
+            sem_QS_carencia = st.text_area("Redija o motivo da falta de qualidade/carência (será inserido como parágrafo na sentença - iniciar com letra maiúscula e colocar ponto final):")
 
         if st.button("Gerar Improcedência"):
             doc = Document()
@@ -131,19 +131,19 @@ if 'processo_formatado' in locals():
         motivo_DII = st.radio("Qual o motivo desta DII?", [1,2],
                     format_func = lambda x: "DII fixada expressamente na perícia" if x == 1 else "Quero redigir esclarecimentos")
         if motivo_DII == 2:
-            motivo_DII_redigido = st.text_area("Esclareça a DII escolhida:")
+            motivo_DII_redigido = st.text_area("Esclareça a DII escolhida (será inserido como parágrafo na sentença - iniciar com letra maiúscula e colocar ponto final):")
         else:
             motivo_DII_redigido = "DII fixada expressamente na perícia."
 
-        qualidade = st.text_area("Explique a qualidade de segurado na DII:")
-        carencia = st.text_area("Explique a carência na DII:")
+        qualidade = st.text_area("Explique a qualidade de segurado na DII (será inserido como parágrafo na sentença - iniciar com letra maiúscula e colocar ponto final):")
+        carencia = st.text_area("Explique a carência na DII (será inserido como parágrafo na sentença - iniciar com letra maiúscula e colocar ponto final):")
 
         if tipo == 1:
             por_que_concedeu_ap_invalidez = st.radio ("Por que foi concedida aposentadoria por invalidez?", [1, 2],
                                                     format_func = lambda x: ["Sendo a incapacidade total e permanente, satisfaz a parte autora o requisito de incapacidade hábil à concessão de benefício por incapacidade permanente.", "Mesmo sendo a incapacidade permanente, mas clinicamente parcial, percebe-se que a parte autora, dada sua situação concreta de instrução e idade, é insusceptível de reabilitação, de forma que impede a parte de prover sua manutenção (súmula 47 TNU)."] [x-1])
             if por_que_concedeu_ap_invalidez == 2:
                 observacao_sobre_aposentadoria_invalidez = "Mesmo sendo a incapacidade permanente, mas clinicamente parcial, percebe-se que a parte autora, dada sua situação concreta de instrução e idade, é insusceptível de reabilitação, de forma que impede a parte de prover sua manutenção (súmula 47 TNU)."
-                explicando_sumula_47 = st.text_area("Explique no caso concreto, por qual motivo aplicou-se a súmula 47 da TNU:")
+                explicando_sumula_47 = st.text_area("Explique no caso concreto, por qual motivo aplicou-se a súmula 47 da TNU: (será inserido como parágrafo na sentença - iniciar com letra maiúscula e colocar ponto final)")
             else:
                 observacao_sobre_aposentadoria_invalidez = "Sendo a incapacidade total e permanente, satisfaz a parte autora o requisito de incapacidade hábil à concessão de benefício por incapacidade permanente."
 
@@ -156,13 +156,13 @@ if 'processo_formatado' in locals():
                 observacao_sobre_auxilio_doenca = "Mesmo sendo a incapacidade temporária e parcial, verifica-se pelo conjunto probatório que a parte não pode exercer suas atividades habituais, de modo a fazer jus ao benefício por incapacidade temporária. Não se trata de incapacidade total e tampouco permanente, que possa resultar na concessão de outro benefício."
 
         if tipo == 3:
-            por_que_reabilitacao = st.text_area("A concessão de auxílio-doença e encaminhamento para reabilitação advém de incapacidade parcial e permanente, e pelo fato de que não pode ser aplicada a súmula 47 da TNU (que determina a concessão de benefício de aposentadoria por invalidez, diante da idade, condições pessoais, etc. do segurado). Explique por que não pode ser concedida aposentadoria por invalidez no caso concreto.")
+            por_que_reabilitacao = st.text_area("A concessão de auxílio-doença e encaminhamento para reabilitação advém de incapacidade parcial e permanente, e pelo fato de que não pode ser aplicada a súmula 47 da TNU (que determina a concessão de benefício de aposentadoria por invalidez, diante da idade, condições pessoais, etc. do segurado). Explique por que não pode ser concedida aposentadoria por invalidez no caso concreto (será inserido como parágrafo na sentença - iniciar com letra maiúscula e colocar ponto final).")
 
         dib = st.text_input("DIB (dd/mm/aaaa):")
         motivo_DIB = st.radio("DIB fixada na DER?", [1,2,3],
                         format_func = lambda x: "DIB na DER" if x == 1 else "DIB fixada no dia seguinte à cessação de benefício por incapacidade anterior" if x == 2 else "DIB fixada em outra data (necessário esclarecer)")
         if motivo_DIB == 3:
-            motivo_DIB_redigido = st.text_area("Esclareça a DIB escolhida:")
+            motivo_DIB_redigido = st.text_area("Esclareça a DIB escolhida (será inserido como parágrafo na sentença - iniciar com letra maiúscula e colocar ponto final):")
         elif motivo_DIB == 2:
             motivo_DIB_redigido = "DIB fixada no dia seguinte à cessação de benefício por incapacidade anterior."
         else:
