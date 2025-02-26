@@ -47,6 +47,7 @@ Feitas essas premissas, passo a analisar o caso concreto.''')
 # Interface gráfica
 st.title("PROGRAMA GERADOR DE SENTENÇAS BENEFÍCIOS POR INCAPACIDADE")
 st.write("Criado por: Carlos Alberto Antonio Junior - Juiz Federal - TRF3")
+st.write("1 Vara Federal em Caraguatatuba/SP")
 
 # Input do processo
 processo = st.text_input("Qual o número do processo? Digite apenas números, 20 dígitos, sem . - / #:")
