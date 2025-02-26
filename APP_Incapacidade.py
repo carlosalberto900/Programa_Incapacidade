@@ -168,10 +168,10 @@ if 'processo_formatado' in locals():
         else:
             motivo_DIB_redigido = "DIB fixada na DER."
 
-        dcb = st.text_input("DCB (dd/mm/aaaa):") if tipo == 1 else None
+        dcb = st.text_input("DCB (dd/mm/aaaa):") if tipo == 2 else None
 
         motivo_da_DCB = st.radio("Explique a DCB fixada", [1, 2],
-                        format_func = lambda x: ["Para fixação da DCB foi adotada a estimativa de prazo de recuperação de capacidade prevista na perícia, com termo inicial na data do exame, na forma do Tema 246 da TNU. O INSS deverá garantir o mínimo de 30 dias de manutenção do benefício, desde a implantação, para viabilizar o pedido administrativo de prorrogação. Compete à parte acompanhar a implantação e prazo para eventual prorrogação.", "Para fixação da DCB foi adotado o prazo de 120 dias a contar da efetiva implantação, na forma do Tema 246 da TNU. O INSS deverá garantir o mínimo de 30 dias de manutenção do benefício, desde a implantação, para viabilizar o pedido administrativo de prorrogação. Compete à parte acompanhar a implantação e prazo para eventual prorrogação."] [x-1]) if tipo in [2, 3] else None
+                        format_func = lambda x: ["Para fixação da DCB foi adotada a estimativa de prazo de recuperação de capacidade prevista na perícia, com termo inicial na data do exame, na forma do Tema 246 da TNU. O INSS deverá garantir o mínimo de 30 dias de manutenção do benefício, desde a implantação, para viabilizar o pedido administrativo de prorrogação. Compete à parte acompanhar a implantação e prazo para eventual prorrogação.", "Para fixação da DCB foi adotado o prazo de 120 dias a contar da efetiva implantação, na forma do Tema 246 da TNU. O INSS deverá garantir o mínimo de 30 dias de manutenção do benefício, desde a implantação, para viabilizar o pedido administrativo de prorrogação. Compete à parte acompanhar a implantação e prazo para eventual prorrogação."] [x-1]) if tipo == 2 else None
         if motivo_da_DCB == 1:
             motivo_da_DCB_redigido = "Para fixação da DCB foi adotada a estimativa de prazo de recuperação de capacidade prevista na perícia, com termo inicial na data do exame, na forma do Tema 246 da TNU. O INSS deverá garantir o mínimo de 30 dias de manutenção do benefício, desde a implantação, para viabilizar o pedido administrativo de prorrogação. Compete à parte acompanhar a implantação e prazo para eventual prorrogação."
         else:
