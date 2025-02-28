@@ -200,7 +200,7 @@ if 'processo_formatado' in locals():
                 if p.strip(): doc.add_paragraph(p.strip())
             if tipo == 1:
                 beneficio_concedido = "benefício por incapacidade permanente (aposentadoria por invalidez)"
-                doc.add_paragraph(f"Da perícia médica podemos verificar que o perito concluiu que há incapacidade {incapacidade_total_ou_parcial} e {incapacidade_temporaria_ou_permanente}. A perícia, ainda, fixou a DII de tal incapacidade em {dii}. ({motivo_DII_redigido})")
+                doc.add_paragraph(f"Da perícia médica podemos verificar que o perito concluiu que há incapacidade {incapacidade_total_ou_parcial} e {incapacidade_temporaria_ou_permanente}. Fixo a DII em {dii}. ({motivo_DII_redigido})")
                 doc.add_paragraph(f"Na DII considerada podemos concluir, sobre a qualidade de segurado e carência:")
                 doc.add_paragraph(f"Qualidade de segurado - {qualidade}")
                 doc.add_paragraph(f"Carência - {carencia}")
@@ -230,7 +230,7 @@ if 'processo_formatado' in locals():
 
             if tipo == 2:
                 beneficio_concedido = "benefício por incapacidade temporária (auxílio-doença)"
-                doc.add_paragraph(f"Da perícia médica podemos verificar que o perito concluiu que há incapacidade {incapacidade_total_ou_parcial} e {incapacidade_temporaria_ou_permanente}. A perícia, ainda, fixou a DII de tal incapacidade em {dii}. {motivo_DII_redigido})")
+                doc.add_paragraph(f"Da perícia médica podemos verificar que o perito concluiu que há incapacidade {incapacidade_total_ou_parcial} e {incapacidade_temporaria_ou_permanente}. Fixo a DII em {dii}. {motivo_DII_redigido})")
                 doc.add_paragraph(f"Na DII considerada podemos concluir, sobre a qualidade de segurado e carência:")
                 doc.add_paragraph(f"Qualidade de segurado - {qualidade}")
                 doc.add_paragraph(f"Carência - {carencia}")
@@ -261,7 +261,7 @@ if 'processo_formatado' in locals():
 
             if tipo == 3:
                 beneficio_concedido = "benefício por incapacidade temporária (auxilio doença), com encaminhamento ao serviço de reabilitação profissional"
-                doc.add_paragraph(f"Da perícia médica podemos verificar que o perito concluiu que há incapacidade {incapacidade_total_ou_parcial} e {incapacidade_temporaria_ou_permanente}. A perícia, ainda, fixou a DII de tal incapacidade em {dii}. {motivo_DII_redigido})")
+                doc.add_paragraph(f"Da perícia médica podemos verificar que o perito concluiu que há incapacidade {incapacidade_total_ou_parcial} e {incapacidade_temporaria_ou_permanente}. A perícia, ainda, Fixo a DII em {dii}. {motivo_DII_redigido})")
                 doc.add_paragraph(f"Na DII considerada podemos concluir, sobre a qualidade de segurado e carência:")
                 doc.add_paragraph(f"Qualidade de segurado - {qualidade}")
                 doc.add_paragraph(f"Carência - {carencia}")
