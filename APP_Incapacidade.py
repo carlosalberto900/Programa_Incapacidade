@@ -210,7 +210,7 @@ if 'processo_formatado' in locals():
                 doc.add_paragraph(f"{observacao_sobre_aposentadoria_invalidez}")
                 if por_que_concedeu_ap_invalidez == 2:
                     doc.add_paragraph(f"{explicando_sumula_47}")
-                doc.add_paragraph(f"Isto posto, com resolução de mérito nos termos do art. 487, I, do CPC, JULGO PROCEDENTE o pedido para conceder o {beneficio_concedido} nos seguintes parâmetros")
+                doc.add_paragraph(f"Isto posto, com resolução de mérito nos termos do art. 487, I, do CPC, JULGO PROCEDENTE o pedido para conceder o {beneficio_concedido} nos seguintes parâmetros:")
                 doc.add_paragraph(f"Benefício {beneficio_concedido}")
                 doc.add_paragraph(f"NB: a ser definida pelo INSS")
                 doc.add_paragraph(f"DII: {dii}")
@@ -270,7 +270,7 @@ if 'processo_formatado' in locals():
                 doc.add_paragraph(f"Diante do cenário do caso concreto, restando comprovada que a incapacidade laboral da parte autora o benefício que deve ser concedido é o {beneficio_concedido}")
                 doc.add_paragraph(f"O tema 177 da TNU é claro determinar o encaminhamento do segurado incapaz parcialmente para a reabilitação, quando não é o caso de concessão de benefício por incapacidade permanente. É este o caso dos autos.")
                 doc.add_paragraph(f"{por_que_reabilitacao}")
-                doc.add_paragraph(f"Isto posto, com resolução de mérito nos termos do art. 487, I, do CPC, JULGO PROCEDENTE o pedido para conceder o {beneficio_concedido} nos seguintes parâmetros:
+                doc.add_paragraph(f"Isto posto, com resolução de mérito nos termos do art. 487, I, do CPC, JULGO PROCEDENTE o pedido para conceder o {beneficio_concedido} nos seguintes parâmetros:")
                 doc.add_paragraph(f"Benefício {beneficio_concedido}")
                 doc.add_paragraph(f"NB: a ser definida pelo INSS")
                 doc.add_paragraph(f"DII: {dii}")
