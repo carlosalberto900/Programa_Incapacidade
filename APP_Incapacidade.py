@@ -296,94 +296,128 @@ if 'processo_formatado' in locals():
                 
             if tipo == 1:
                 beneficio_concedido = "benefício por incapacidade permanente (aposentadoria por invalidez)"
-                doc.add_paragraph(f"Da perícia médica podemos verificar que o perito concluiu que há incapacidade {incapacidade_total_ou_parcial} e {incapacidade_temporaria_ou_permanente}. Fixo a DII em {dii}. {motivo_DII_redigido}")
-                doc.add_paragraph(f"Na DII considerada podemos concluir, sobre a qualidade de segurado e carência:")
-                doc.add_paragraph(f"Qualidade de segurado - {qualidade}")
-                doc.add_paragraph(f"Carência - {carencia}")
-                doc.add_paragraph(f"A prova técnica produzida no processo é determinante em casos em que a incapacidade somente pode ser aferida por médico perito, profissional habilitado a fornecer ao Juízo elementos técnicos para formação de sua convicção.")
-                doc.add_paragraph(f"Afasto qualquer necessidade de complementação do laudo, ou necessidade de resposta a novos quesitos. O laudo é claro em sua conclusão, e não há imprecisões que o comprometa ou infirmem suas conclusões. Os peritos deste Juízo são profissionais equidistantes das partes e com habilidades técnicas necessárias para a aferição quanto à existência ou não de incapacidade da parte autora, não há razões para que o laudo médico pericial seja recusado. Ademais, o laudo pericial foi emitido com base no quadro clínico verificado por ocasião da(s) perícia(s) médica(s), através de exames físicos, bem como na história clínica, através dos exames apresentados pela parte autora na data da sua perícia judicial.")
-                doc.add_paragraph(f"Diante do cenário do caso concreto, restando comprovada que a incapacidade laboral da parte autora o benefício que deve ser concedido é o {beneficio_concedido}")
-                doc.add_paragraph(f"{observacao_sobre_aposentadoria_invalidez}")
+                
+                fundamentacao1_tipo1 = [
+                        (f"Da perícia médica podemos verificar que o perito concluiu que há incapacidade {incapacidade_total_ou_parcial} e {incapacidade_temporaria_ou_permanente}. Fixo a DII em {dii}. {motivo_DII_redigido}"),
+                        (f"Na DII considerada podemos concluir, sobre a qualidade de segurado e carência:"),
+                        (f"Qualidade de segurado - {qualidade}"),
+                        (f"Carência - {carencia}"),
+                        (f"A prova técnica produzida no processo é determinante em casos em que a incapacidade somente pode ser aferida por médico perito, profissional habilitado a fornecer ao Juízo elementos técnicos para formação de sua convicção."),
+                        (f"Afasto qualquer necessidade de complementação do laudo, ou necessidade de resposta a novos quesitos. O laudo é claro em sua conclusão, e não há imprecisões que o comprometa ou infirmem suas conclusões. Os peritos deste Juízo são profissionais equidistantes das partes e com habilidades técnicas necessárias para a aferição quanto à existência ou não de incapacidade da parte autora, não há razões para que o laudo médico pericial seja recusado. Ademais, o laudo pericial foi emitido com base no quadro clínico verificado por ocasião da(s) perícia(s) médica(s), através de exames físicos, bem como na história clínica, através dos exames apresentados pela parte autora na data da sua perícia judicial."),
+                        (f"Diante do cenário do caso concreto, restando comprovada que a incapacidade laboral da parte autora o benefício que deve ser concedido é o {beneficio_concedido}"),
+                        (f"{observacao_sobre_aposentadoria_invalidez}"),
+                ]
+                for n in fundamentacao1_tipo1:
+                    parag = doc.add_paragraph(n)
+                    parag.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
+                    parag.paragraph_format.first_line_indent = Cm(2)
+               
                 if por_que_concedeu_ap_invalidez == 2:
-                    doc.add_paragraph(f"{explicando_sumula_47}")
-                doc.add_paragraph(f"Isto posto, com resolução de mérito nos termos do art. 487, I, do CPC, JULGO PROCEDENTE o pedido para conceder o {beneficio_concedido} nos seguintes parâmetros:")
-                doc.add_paragraph(f"Benefício {beneficio_concedido}")
-                doc.add_paragraph(f"NB: a ser definida pelo INSS")
-                doc.add_paragraph(f"DII: {dii}")
-                doc.add_paragraph(f"DIB: {dib} - {motivo_DIB_redigido}")
-                doc.add_paragraph(f"RMI e RMA: a serem calculadas pelo INSS." + (f"{grande_invalidez_redigido}" if grande_invalidez else ""))
-                doc.add_paragraph(f"DIP: {DIP}")
-                doc.add_paragraph(f"Condeno o INSS ao pagamento dos atrasados devidos desde a DIB fixada, até a DIP em {DIP}, atualizados desde cada competência devida e com juros desde a propositura da demanda, pelos índices e percentuais do Manual de Cálculos da Justiça Federal, a ser apurado em cumprimento invertido de sentença.")
-                doc.add_paragraph(f"Fica autorizado o desconto de eventuais valores recebidos a título de benefícios inacumuláveis.")
-                doc.add_paragraph(f"Condeno o INSS ao ressarcimento dos honorários periciais antecipados pela Justiça Federal (art. 82, § 2º, do CPC).")
-                doc.add_paragraph(f"Considerando que o momento da prolação de sentença é oportuno para distribuir o ônus do tempo do processo, com vistas a salvaguardar a eficácia do princípio constitucional da razoável duração do processo e ao mesmo tempo privilegiar o direito provável em detrimento do improvável, demonstrada a verossimilhança das alegações da parte autora e diante do nítido caráter alimentar da verba pleiteada, nos termos do art. 294 e 300, do CPC ANTECIPA A TUTELA JURISDICIONAL para determinar ao INSS que providencie a implantação do {beneficio_concedido} com data de início de pagamento em {DIP} (DIP).")
-                doc.add_paragraph(f"O INSS deverá providenciar a implantação do benefício previdenciário ora concedido no prazo legal, sendo a contagem em dias úteis, sendo que constitui ônus das partes informar ao Juízo sobre a efetiva implantação do benefício ou eventual descumprimento do prazo pelo INSS/APSADJ.")
-                doc.add_paragraph(f"Sem condenação em honorários nesta instância.")
-                doc.add_paragraph(f"Defiro os benefícios da gratuidade.")
-                doc.add_paragraph(f"Com o trânsito em julgado, implantado o benefício, dê-se início ao cumprimento de sentença.")
-                doc.add_paragraph(f"Proceda a Secretaria como necessário.")
-                doc.add_paragraph(f"Int.")
+                    sum47 = doc.add_paragraph(f"{explicando_sumula_47}")
+                    sum47.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
+                    sum47.paragraph_format.first_line_indent = Cm(2)
+                    
+                fundamentacao2_tipo1 = [
+                        (f"Isto posto, com resolução de mérito nos termos do art. 487, I, do CPC, JULGO PROCEDENTE o pedido para conceder o {beneficio_concedido} nos seguintes parâmetros:"),
+                        (f"Benefício {beneficio_concedido}"),
+                        (f"NB: a ser definida pelo INSS"),
+                        (f"DII: {dii}"),
+                        (f"DIB: {dib} - {motivo_DIB_redigido}"),
+                        (f"RMI e RMA: a serem calculadas pelo INSS." + (f"{grande_invalidez_redigido}" if grande_invalidez else "")),
+                        (f"DIP: {DIP}"),
+                        (f"Condeno o INSS ao pagamento dos atrasados devidos desde a DIB fixada, até a DIP em {DIP}, atualizados desde cada competência devida e com juros desde a propositura da demanda, pelos índices e percentuais do Manual de Cálculos da Justiça Federal, a ser apurado em cumprimento invertido de sentença."),
+                        (f"Fica autorizado o desconto de eventuais valores recebidos a título de benefícios inacumuláveis."),
+                        (f"Condeno o INSS ao ressarcimento dos honorários periciais antecipados pela Justiça Federal (art. 82, § 2º, do CPC)."),
+                        (f"Considerando que o momento da prolação de sentença é oportuno para distribuir o ônus do tempo do processo, com vistas a salvaguardar a eficácia do princípio constitucional da razoável duração do processo e ao mesmo tempo privilegiar o direito provável em detrimento do improvável, demonstrada a verossimilhança das alegações da parte autora e diante do nítido caráter alimentar da verba pleiteada, nos termos do art. 294 e 300, do CPC ANTECIPA A TUTELA JURISDICIONAL para determinar ao INSS que providencie a implantação do {beneficio_concedido} com data de início de pagamento em {DIP} (DIP)."),
+                        (f"O INSS deverá providenciar a implantação do benefício previdenciário ora concedido no prazo legal, sendo a contagem em dias úteis, sendo que constitui ônus das partes informar ao Juízo sobre a efetiva implantação do benefício ou eventual descumprimento do prazo pelo INSS/APSADJ."),
+                        (f"Sem condenação em honorários nesta instância."),
+                        (f"Defiro os benefícios da gratuidade."),
+                        (f"Com o trânsito em julgado, implantado o benefício, dê-se início ao cumprimento de sentença."),
+                        (f"Proceda a Secretaria como necessário."),
+                        (f"Int."),
+                ]
+                for n in fundamentacao2_tipo1:
+                    parag = doc.add_paragraph(n)
+                    parag.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
+                    parag.paragraph_format.first_line_indent = Cm(2)
+                
 
             if tipo == 2:
                 beneficio_concedido = "benefício por incapacidade temporária (auxílio-doença)"
-                doc.add_paragraph(f"Da perícia médica podemos verificar que o perito concluiu que há incapacidade {incapacidade_total_ou_parcial} e {incapacidade_temporaria_ou_permanente}. Fixo a DII em {dii}. {motivo_DII_redigido}")
-                doc.add_paragraph(f"Na DII considerada podemos concluir, sobre a qualidade de segurado e carência:")
-                doc.add_paragraph(f"Qualidade de segurado - {qualidade}")
-                doc.add_paragraph(f"Carência - {carencia}")
-                doc.add_paragraph(f"A prova técnica produzida no processo é determinante em casos em que a incapacidade somente pode ser aferida por médico perito, profissional habilitado a fornecer ao Juízo elementos técnicos para formação de sua convicção.")
-                doc.add_paragraph(f"Afasto qualquer necessidade de complementação do laudo, ou necessidade de resposta a novos quesitos. O laudo é claro em sua conclusão, e não há imprecisões que o comprometa ou infirmem suas conclusões. Os peritos deste Juízo são profissionais equidistantes das partes e com habilidades técnicas necessárias para a aferição quanto à existência ou não de incapacidade da parte autora, não há razões para que o laudo médico pericial seja recusado. Ademais, o laudo pericial foi emitido com base no quadro clínico verificado por ocasião da(s) perícia(s) médica(s), através de exames físicos, bem como na história clínica, através dos exames apresentados pela parte autora na data da sua perícia judicial.")
-                doc.add_paragraph(f"Diante do cenário do caso concreto, restando comprovada que a incapacidade laboral da parte autora o benefício que deve ser concedido é o {beneficio_concedido}")
-                doc.add_paragraph(f"{observacao_sobre_auxilio_doenca}")
-                doc.add_paragraph(f"{motivo_da_DCB_redigido}")       
-                doc.add_paragraph(f"Isto posto, com resolução de mérito nos termos do art. 487, I, do CPC, JULGO PROCEDENTE o pedido para conceder o {beneficio_concedido} nos seguintes parâmetros:")
-                doc.add_paragraph(f"Benefício {beneficio_concedido}")
-                doc.add_paragraph(f"NB: a ser definida pelo INSS")
-                doc.add_paragraph(f"DII: {dii}")
-                doc.add_paragraph(f"DIB: {dib} - {motivo_DIB_redigido}")
-                doc.add_paragraph(f"RMI e RMA: a serem calculadas pelo INSS")
-                doc.add_paragraph(f"DCB: {dcb}")
-                doc.add_paragraph(f"DIP: {DIP}")
-                doc.add_paragraph(f"Condeno o INSS ao pagamento dos atrasados devidos desde a DIB fixada, até a DIP em {DIP}, atualizados desde cada competência devida e com juros desde a propositura da demanda, pelos índices e percentuais do Manual de Cálculos da Justiça Federal, a ser apurado em cumprimento invertido de sentença.")
-                doc.add_paragraph(f"Fica autorizado o desconto de eventuais valores recebidos a título de benefícios inacumuláveis.")
-                doc.add_paragraph(f"Condeno o INSS ao ressarcimento dos honorários periciais antecipados pela Justiça Federal (art. 82, § 2º, do CPC).")
-                doc.add_paragraph(f"Considerando que o momento da prolação de sentença é oportuno para distribuir o ônus do tempo do processo, com vistas a salvaguardar a eficácia do princípio constitucional da razoável duração do processo e ao mesmo tempo privilegiar o direito provável em detrimento do improvável, demonstrada a verossimilhança das alegações da parte autora e diante do nítido caráter alimentar da verba pleiteada, nos termos do art. 294 e 300, do CPC ANTECIPA A TUTELA JURISDICIONAL para determinar ao INSS que providencie a implantação do {beneficio_concedido} com data de início de pagamento em {DIP} (DIP).")
-                doc.add_paragraph(f"O INSS deverá providenciar a implantação do benefício previdenciário ora concedido no prazo legal, sendo a contagem em dias úteis, sendo que constitui ônus das partes informar ao Juízo sobre a efetiva implantação do benefício ou eventual descumprimento do prazo pelo INSS/APSADJ.")
-                doc.add_paragraph(f"O INSS deverá garantir o mínimo de 30 dias de manutenção do benefício, desde a implantação, para viabilizar o pedido administrativo de prorrogação, mesmo nas hipóteses em que a DCB fixada na sentença seja anterior à data de sua prolatação. Compete à parte acompanhar a implantação e prazo para eventual prorrogação, não havendo intimação por este Juízo.")
-                doc.add_paragraph(f"Sem condenação em honorários nesta instância.")
-                doc.add_paragraph(f"Defiro os benefícios da gratuidade.")
-                doc.add_paragraph(f"Com o trânsito em julgado, implantado o benefício, dê-se início ao cumprimento de sentença.")
-                doc.add_paragraph(f"Proceda a Secretaria como necessário.")
-                doc.add_paragraph(f"Int.")
+
+                fundamentacao_tipo2 = [
+                (f"Da perícia médica podemos verificar que o perito concluiu que há incapacidade {incapacidade_total_ou_parcial} e {incapacidade_temporaria_ou_permanente}. Fixo a DII em {dii}. {motivo_DII_redigido}"),
+                (f"Na DII considerada podemos concluir, sobre a qualidade de segurado e carência:"),
+                (f"Qualidade de segurado - {qualidade}"),
+                (f"Carência - {carencia}"),
+                (f"A prova técnica produzida no processo é determinante em casos em que a incapacidade somente pode ser aferida por médico perito, profissional habilitado a fornecer ao Juízo elementos técnicos para formação de sua convicção."),
+                (f"Afasto qualquer necessidade de complementação do laudo, ou necessidade de resposta a novos quesitos. O laudo é claro em sua conclusão, e não há imprecisões que o comprometa ou infirmem suas conclusões. Os peritos deste Juízo são profissionais equidistantes das partes e com habilidades técnicas necessárias para a aferição quanto à existência ou não de incapacidade da parte autora, não há razões para que o laudo médico pericial seja recusado. Ademais, o laudo pericial foi emitido com base no quadro clínico verificado por ocasião da(s) perícia(s) médica(s), através de exames físicos, bem como na história clínica, através dos exames apresentados pela parte autora na data da sua perícia judicial."),
+                (f"Diante do cenário do caso concreto, restando comprovada que a incapacidade laboral da parte autora o benefício que deve ser concedido é o {beneficio_concedido}"),
+                (f"{observacao_sobre_auxilio_doenca}"),
+                (f"{motivo_da_DCB_redigido}"),
+                (f"Isto posto, com resolução de mérito nos termos do art. 487, I, do CPC, JULGO PROCEDENTE o pedido para conceder o {beneficio_concedido} nos seguintes parâmetros:"),
+                (f"Benefício {beneficio_concedido}"),
+                (f"NB: a ser definida pelo INSS"),
+                (f"DII: {dii}"),
+                (f"DIB: {dib} - {motivo_DIB_redigido}"),
+                (f"RMI e RMA: a serem calculadas pelo INSS"),
+                (f"DCB: {dcb}"),
+                (f"DIP: {DIP}"),
+                (f"Condeno o INSS ao pagamento dos atrasados devidos desde a DIB fixada, até a DIP em {DIP}, atualizados desde cada competência devida e com juros desde a propositura da demanda, pelos índices e percentuais do Manual de Cálculos da Justiça Federal, a ser apurado em cumprimento invertido de sentença."),
+                (f"Fica autorizado o desconto de eventuais valores recebidos a título de benefícios inacumuláveis."),
+                (f"Condeno o INSS ao ressarcimento dos honorários periciais antecipados pela Justiça Federal (art. 82, § 2º, do CPC)."),
+                (f"Considerando que o momento da prolação de sentença é oportuno para distribuir o ônus do tempo do processo, com vistas a salvaguardar a eficácia do princípio constitucional da razoável duração do processo e ao mesmo tempo privilegiar o direito provável em detrimento do improvável, demonstrada a verossimilhança das alegações da parte autora e diante do nítido caráter alimentar da verba pleiteada, nos termos do art. 294 e 300, do CPC ANTECIPA A TUTELA JURISDICIONAL para determinar ao INSS que providencie a implantação do {beneficio_concedido} com data de início de pagamento em {DIP} (DIP)."),
+                (f"O INSS deverá providenciar a implantação do benefício previdenciário ora concedido no prazo legal, sendo a contagem em dias úteis, sendo que constitui ônus das partes informar ao Juízo sobre a efetiva implantação do benefício ou eventual descumprimento do prazo pelo INSS/APSADJ."),
+                (f"O INSS deverá garantir o mínimo de 30 dias de manutenção do benefício, desde a implantação, para viabilizar o pedido administrativo de prorrogação, mesmo nas hipóteses em que a DCB fixada na sentença seja anterior à data de sua prolatação. Compete à parte acompanhar a implantação e prazo para eventual prorrogação, não havendo intimação por este Juízo."),
+                (f"Sem condenação em honorários nesta instância."),
+                (f"Defiro os benefícios da gratuidade."),
+                (f"Com o trânsito em julgado, implantado o benefício, dê-se início ao cumprimento de sentença."),
+                (f"Proceda a Secretaria como necessário."),
+                (f"Int."),
+                ]
+                for n in fundamentacao_tipo2:
+                    parag = doc.add_paragraph(n)
+                    parag.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
+                    parag.paragraph_format.first_line_indent = Cm(2)
+                    
 
             if tipo == 3:
                 beneficio_concedido = "benefício por incapacidade temporária (auxilio doença), com encaminhamento ao serviço de reabilitação profissional"
-                doc.add_paragraph(f"Da perícia médica podemos verificar que o perito concluiu que há incapacidade {incapacidade_total_ou_parcial} e {incapacidade_temporaria_ou_permanente}. A perícia, ainda, Fixo a DII em {dii}. {motivo_DII_redigido}")
-                doc.add_paragraph(f"Na DII considerada podemos concluir, sobre a qualidade de segurado e carência:")
-                doc.add_paragraph(f"Qualidade de segurado - {qualidade}")
-                doc.add_paragraph(f"Carência - {carencia}")
-                doc.add_paragraph(f"A prova técnica produzida no processo é determinante em casos em que a incapacidade somente pode ser aferida por médico perito, profissional habilitado a fornecer ao Juízo elementos técnicos para formação de sua convicção.")
-                doc.add_paragraph(f"Afasto qualquer necessidade de complementação do laudo, ou necessidade de resposta a novos quesitos. O laudo é claro em sua conclusão, e não há imprecisões que o comprometa ou infirmem suas conclusões. Os peritos deste Juízo são profissionais equidistantes das partes e com habilidades técnicas necessárias para a aferição quanto à existência ou não de incapacidade da parte autora, não há razões para que o laudo médico pericial seja recusado. Ademais, o laudo pericial foi emitido com base no quadro clínico verificado por ocasião da(s) perícia(s) médica(s), através de exames físicos, bem como na história clínica, através dos exames apresentados pela parte autora na data da sua perícia judicial.")
-                doc.add_paragraph(f"Diante do cenário do caso concreto, restando comprovada que a incapacidade laboral da parte autora o benefício que deve ser concedido é o {beneficio_concedido}")
-                doc.add_paragraph(f"O tema 177 da TNU é claro determinar o encaminhamento do segurado incapaz parcialmente para a reabilitação, quando não é o caso de concessão de benefício por incapacidade permanente. É este o caso dos autos.")
-                doc.add_paragraph(f"{por_que_reabilitacao}")
-                doc.add_paragraph(f"Isto posto, com resolução de mérito nos termos do art. 487, I, do CPC, JULGO PROCEDENTE o pedido para conceder o {beneficio_concedido} nos seguintes parâmetros:")
-                doc.add_paragraph(f"Benefício {beneficio_concedido}")
-                doc.add_paragraph(f"NB: a ser definida pelo INSS")
-                doc.add_paragraph(f"DII: {dii}")
-                doc.add_paragraph(f"DIB: {dib} - {motivo_DIB_redigido}")
-                doc.add_paragraph(f"RMI e RMA: a serem calculadas pelo INSS")
-                doc.add_paragraph(f"DCB: o benefício deve ser mantido enquanto não for decidido sobre a elegibilidade da parte segurada ao serviço de reabilitação, e, se o caso, enquanto durar a própria reabilitação")
-                doc.add_paragraph(f"DIP: {DIP}")
-                doc.add_paragraph(f"Condeno o INSS ao pagamento dos atrasados devidos desde a DIB fixada, até a DIP em {DIP}, atualizados desde cada competência devida e com juros desde a propositura da demanda, pelos índices e percentuais do Manual de Cálculos da Justiça Federal, a ser apurado em cumprimento invertido de sentença.")
-                doc.add_paragraph(f"Fica autorizado o desconto de eventuais valores recebidos a título de benefícios inacumuláveis.")
-                doc.add_paragraph(f"Condeno o INSS ao ressarcimento dos honorários periciais antecipados pela Justiça Federal (art. 82, § 2º, do CPC).")
-                doc.add_paragraph(f"Considerando que o momento da prolação de sentença é oportuno para distribuir o ônus do tempo do processo, com vistas a salvaguardar a eficácia do princípio constitucional da razoável duração do processo e ao mesmo tempo privilegiar o direito provável em detrimento do improvável, demonstrada a verossimilhança das alegações da parte autora e diante do nítido caráter alimentar da verba pleiteada, nos termos do art. 294 e 300, do CPC ANTECIPA A TUTELA JURISDICIONAL para determinar ao INSS que providencie a implantação do {beneficio_concedido} com data de início de pagamento em {DIP} (DIP).")
-                doc.add_paragraph(f"O INSS deverá providenciar a implantação do benefício previdenciário ora concedido no prazo legal, sendo a contagem em dias úteis, sendo que constitui ônus das partes informar ao Juízo sobre a efetiva implantação do benefício ou eventual descumprimento do prazo pelo INSS/APSADJ.")
-                doc.add_paragraph(f"Sem condenação em honorários nesta instância.")
-                doc.add_paragraph(f"Defiro os benefícios da gratuidade.")
-                doc.add_paragraph(f"Com o trânsito em julgado, implantado o benefício, dê-se início ao cumprimento de sentença.")
-                doc.add_paragraph(f"Proceda a Secretaria como necessário.")
-                doc.add_paragraph(f"Int.")
+
+                fundamentaçao_tipo3 = [
+                (f"Da perícia médica podemos verificar que o perito concluiu que há incapacidade {incapacidade_total_ou_parcial} e {incapacidade_temporaria_ou_permanente}. A perícia, ainda, Fixo a DII em {dii}. {motivo_DII_redigido}"),
+                (f"Na DII considerada podemos concluir, sobre a qualidade de segurado e carência:"),
+                (f"Qualidade de segurado - {qualidade}"),
+                (f"Carência - {carencia}"),
+                (f"A prova técnica produzida no processo é determinante em casos em que a incapacidade somente pode ser aferida por médico perito, profissional habilitado a fornecer ao Juízo elementos técnicos para formação de sua convicção."),
+                (f"Afasto qualquer necessidade de complementação do laudo, ou necessidade de resposta a novos quesitos. O laudo é claro em sua conclusão, e não há imprecisões que o comprometa ou infirmem suas conclusões. Os peritos deste Juízo são profissionais equidistantes das partes e com habilidades técnicas necessárias para a aferição quanto à existência ou não de incapacidade da parte autora, não há razões para que o laudo médico pericial seja recusado. Ademais, o laudo pericial foi emitido com base no quadro clínico verificado por ocasião da(s) perícia(s) médica(s), através de exames físicos, bem como na história clínica, através dos exames apresentados pela parte autora na data da sua perícia judicial."),
+                (f"Diante do cenário do caso concreto, restando comprovada que a incapacidade laboral da parte autora o benefício que deve ser concedido é o {beneficio_concedido}"),
+                (f"O tema 177 da TNU é claro determinar o encaminhamento do segurado incapaz parcialmente para a reabilitação, quando não é o caso de concessão de benefício por incapacidade permanente. É este o caso dos autos."),
+                (f"{por_que_reabilitacao}"),
+                (f"Isto posto, com resolução de mérito nos termos do art. 487, I, do CPC, JULGO PROCEDENTE o pedido para conceder o {beneficio_concedido} nos seguintes parâmetros:"),
+                (f"Benefício {beneficio_concedido}"),
+                (f"NB: a ser definida pelo INSS"),
+                (f"DII: {dii}"),
+                (f"DIB: {dib} - {motivo_DIB_redigido}"),
+                (f"RMI e RMA: a serem calculadas pelo INSS"),
+                (f"DCB: o benefício deve ser mantido enquanto não for decidido sobre a elegibilidade da parte segurada ao serviço de reabilitação, e, se o caso, enquanto durar a própria reabilitação"),
+                (f"DIP: {DIP}"),
+                (f"Condeno o INSS ao pagamento dos atrasados devidos desde a DIB fixada, até a DIP em {DIP}, atualizados desde cada competência devida e com juros desde a propositura da demanda, pelos índices e percentuais do Manual de Cálculos da Justiça Federal, a ser apurado em cumprimento invertido de sentença."),
+                (f"Fica autorizado o desconto de eventuais valores recebidos a título de benefícios inacumuláveis."),
+                (f"Condeno o INSS ao ressarcimento dos honorários periciais antecipados pela Justiça Federal (art. 82, § 2º, do CPC)."),
+                (f"Considerando que o momento da prolação de sentença é oportuno para distribuir o ônus do tempo do processo, com vistas a salvaguardar a eficácia do princípio constitucional da razoável duração do processo e ao mesmo tempo privilegiar o direito provável em detrimento do improvável, demonstrada a verossimilhança das alegações da parte autora e diante do nítido caráter alimentar da verba pleiteada, nos termos do art. 294 e 300, do CPC ANTECIPA A TUTELA JURISDICIONAL para determinar ao INSS que providencie a implantação do {beneficio_concedido} com data de início de pagamento em {DIP} (DIP)."),
+                (f"O INSS deverá providenciar a implantação do benefício previdenciário ora concedido no prazo legal, sendo a contagem em dias úteis, sendo que constitui ônus das partes informar ao Juízo sobre a efetiva implantação do benefício ou eventual descumprimento do prazo pelo INSS/APSADJ."),
+                (f"Sem condenação em honorários nesta instância."),
+                (f"Defiro os benefícios da gratuidade."),
+                (f"Com o trânsito em julgado, implantado o benefício, dê-se início ao cumprimento de sentença."),
+                (f"Proceda a Secretaria como necessário."),
+                (f"Int."),
+                ]
+
+                for n in fundamentacao_tipo3:
+                    parag = doc.add_paragraph(n)
+                    parag.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
+                    parag.paragraph_format.first_line_indent = Cm(2)
 
             with tempfile.NamedTemporaryFile(delete=False, suffix='.docx') as tmp:
                 doc.save(tmp.name)
