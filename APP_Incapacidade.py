@@ -200,7 +200,7 @@ if 'processo_formatado' in locals():
                 if p.strip(): doc.add_paragraph(p.strip())
             if tipo == 1:
                 beneficio_concedido = "benefício por incapacidade permanente (aposentadoria por invalidez)"
-                doc.add_paragraph(f"Da perícia médica podemos verificar que o perito concluiu que há incapacidade {incapacidade_total_ou_parcial} e {incapacidade_temporaria_ou_permanente}. Fixo a DII em {dii}. ({motivo_DII_redigido})")
+                doc.add_paragraph(f"Da perícia médica podemos verificar que o perito concluiu que há incapacidade {incapacidade_total_ou_parcial} e {incapacidade_temporaria_ou_permanente}. Fixo a DII em {dii}. {motivo_DII_redigido}")
                 doc.add_paragraph(f"Na DII considerada podemos concluir, sobre a qualidade de segurado e carência:")
                 doc.add_paragraph(f"Qualidade de segurado - {qualidade}")
                 doc.add_paragraph(f"Carência - {carencia}")
@@ -230,7 +230,7 @@ if 'processo_formatado' in locals():
 
             if tipo == 2:
                 beneficio_concedido = "benefício por incapacidade temporária (auxílio-doença)"
-                doc.add_paragraph(f"Da perícia médica podemos verificar que o perito concluiu que há incapacidade {incapacidade_total_ou_parcial} e {incapacidade_temporaria_ou_permanente}. Fixo a DII em {dii}. {motivo_DII_redigido})")
+                doc.add_paragraph(f"Da perícia médica podemos verificar que o perito concluiu que há incapacidade {incapacidade_total_ou_parcial} e {incapacidade_temporaria_ou_permanente}. Fixo a DII em {dii}. {motivo_DII_redigido}")
                 doc.add_paragraph(f"Na DII considerada podemos concluir, sobre a qualidade de segurado e carência:")
                 doc.add_paragraph(f"Qualidade de segurado - {qualidade}")
                 doc.add_paragraph(f"Carência - {carencia}")
@@ -238,6 +238,7 @@ if 'processo_formatado' in locals():
                 doc.add_paragraph(f"Afasto qualquer necessidade de complementação do laudo, ou necessidade de resposta a novos quesitos. O laudo é claro em sua conclusão, e não há imprecisões que o comprometa ou infirmem suas conclusões. Os peritos deste Juízo são profissionais equidistantes das partes e com habilidades técnicas necessárias para a aferição quanto à existência ou não de incapacidade da parte autora, não há razões para que o laudo médico pericial seja recusado. Ademais, o laudo pericial foi emitido com base no quadro clínico verificado por ocasião da(s) perícia(s) médica(s), através de exames físicos, bem como na história clínica, através dos exames apresentados pela parte autora na data da sua perícia judicial.")
                 doc.add_paragraph(f"Diante do cenário do caso concreto, restando comprovada que a incapacidade laboral da parte autora o benefício que deve ser concedido é o {beneficio_concedido}")
                 doc.add_paragraph(f"{observacao_sobre_auxilio_doenca}")
+                doc.add_paragraph(f"{motivo_da_DCB_redigido}")       
                 doc.add_paragraph(f"Isto posto, com resolução de mérito nos termos do art. 487, I, do CPC, JULGO PROCEDENTE o pedido para conceder o {beneficio_concedido} nos seguintes parâmetros:")
                 doc.add_paragraph(f"Benefício {beneficio_concedido}")
                 doc.add_paragraph(f"NB: a ser definida pelo INSS")
@@ -246,7 +247,6 @@ if 'processo_formatado' in locals():
                 doc.add_paragraph(f"RMI e RMA: a serem calculadas pelo INSS")
                 doc.add_paragraph(f"DCB: {dcb}")
                 doc.add_paragraph(f"DIP: {DIP}")
-                doc.add_paragraph(f"{motivo_da_DCB_redigido}")
                 doc.add_paragraph(f"Condeno o INSS ao pagamento dos atrasados devidos desde a DIB fixada, até a DIP em {DIP}, atualizados desde cada competência devida e com juros desde a propositura da demanda, pelos índices e percentuais do Manual de Cálculos da Justiça Federal, a ser apurado em cumprimento invertido de sentença.")
                 doc.add_paragraph(f"Fica autorizado o desconto de eventuais valores recebidos a título de benefícios inacumuláveis.")
                 doc.add_paragraph(f"Condeno o INSS ao ressarcimento dos honorários periciais antecipados pela Justiça Federal (art. 82, § 2º, do CPC).")
@@ -261,7 +261,7 @@ if 'processo_formatado' in locals():
 
             if tipo == 3:
                 beneficio_concedido = "benefício por incapacidade temporária (auxilio doença), com encaminhamento ao serviço de reabilitação profissional"
-                doc.add_paragraph(f"Da perícia médica podemos verificar que o perito concluiu que há incapacidade {incapacidade_total_ou_parcial} e {incapacidade_temporaria_ou_permanente}. A perícia, ainda, Fixo a DII em {dii}. {motivo_DII_redigido})")
+                doc.add_paragraph(f"Da perícia médica podemos verificar que o perito concluiu que há incapacidade {incapacidade_total_ou_parcial} e {incapacidade_temporaria_ou_permanente}. A perícia, ainda, Fixo a DII em {dii}. {motivo_DII_redigido}")
                 doc.add_paragraph(f"Na DII considerada podemos concluir, sobre a qualidade de segurado e carência:")
                 doc.add_paragraph(f"Qualidade de segurado - {qualidade}")
                 doc.add_paragraph(f"Carência - {carencia}")
