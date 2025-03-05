@@ -161,21 +161,39 @@ if 'processo_formatado' in locals():
 
             # Motivos
             if motivo == 1:
-                doc.add_paragraph(f"Realizada perícia para constatação de incapacidade, em sede judicial, foi verificado que a parte autora não apresenta incapacidade para o trabalho. A prova técnica, portanto, resultou na demonstração de que está ausente o requisito de incapacidade.")
-                doc.add_paragraph(f"O caso não comporta que se produza outro laudo pericial, ou que se exija outros esclarecimentos do perito. O perito é claro em seu laudo. ")
-                doc.add_paragraph(f"A simples constatação da doença não significa, necessariamente, que ela seja incapacitante. A função da perícia judicial é verificar a capacidade, ou não, da parte autora para o trabalho.")
-                doc.add_paragraph(f"Ademais, não se visa na presente demanda a realização de exames médicos para analisar toda a condição de saúde da parte autora, na incessante busca por motivo que leve a concessão de benefício. Trata-se de exame pericial baseado na causa de pedir, apenas.")
-                if detalhe == 2:
-                    doc.add_paragraph(f"{ausencia_incapacidade_redigido}")
-            else:
-                doc.add_paragraph(f"{sem_QS_carencia}")
+                fundamento_improcedente = [
+                        (f"Realizada perícia para constatação de incapacidade, em sede judicial, foi verificado que a parte autora não apresenta incapacidade para o trabalho. A prova técnica, portanto, resultou na demonstração de que está ausente o requisito de incapacidade."),
+                        (f"O caso não comporta que se produza outro laudo pericial, ou que se exija outros esclarecimentos do perito. O perito é claro em seu laudo. "),
+                        (f"A simples constatação da doença não significa, necessariamente, que ela seja incapacitante. A função da perícia judicial é verificar a capacidade, ou não, da parte autora para o trabalho."),
+                        (f"Ademais, não se visa na presente demanda a realização de exames médicos para analisar toda a condição de saúde da parte autora, na incessante busca por motivo que leve a concessão de benefício. Trata-se de exame pericial baseado na causa de pedir, apenas."),
+                        ]
 
-            doc.add_paragraph(f"Não cumprido um dos requisitos legais, o pedido é improcedente.")
-            doc.add_paragraph(f"Isto posto, com resolução de mérito nos termos do art. 487, I, do CPC, JULGO IMPROCEDENTE o pedido.")
-            doc.add_paragraph(f"Sem condenação em honorários nesta instância.")
-            doc.add_paragraph(f"Defiro os benefícios da gratuidade.")
-            doc.add_paragraph(f"Com o trânsito em julgado, arquivem-se oportunamente.")
-            doc.add_paragraph(f"Int.")
+                for n in fundamento_improcedente:
+                    parag = doc.add_paragraph(n)
+                    parag.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
+                    parag.paragraph_format.first_line_indent = Cm(2)
+                    
+                if detalhe == 2:
+                    det2 = doc.add_paragraph(f"{ausencia_incapacidade_redigido}")
+                    det2.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
+                    det2.paragraph_format.first_line_indent = Cm(2)
+            else:
+                motivo2 = doc.add_paragraph(f"{sem_QS_carencia}")
+                motivo2.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
+                motivo2.paragraph_format.first_line_indent = Cm(2)
+
+            dispositivo_improcedente = [
+                            (f"Não cumprido um dos requisitos legais, o pedido é improcedente."),
+                            (f"Isto posto, com resolução de mérito nos termos do art. 487, I, do CPC, JULGO IMPROCEDENTE o pedido."),
+                            (f"Sem condenação em honorários nesta instância."),
+                            (f"Defiro os benefícios da gratuidade."),
+                            (f"Com o trânsito em julgado, arquivem-se oportunamente."),
+                            (f"Int."),
+                            ]
+            for n in dispositivo_improcedente:
+                    parag = doc.add_paragraph(n)
+                    parag.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
+                    parag.paragraph_format.first_line_indent = Cm(2)
 
             with tempfile.NamedTemporaryFile(delete=False, suffix='.docx') as tmp:
                 doc.save(tmp.name)
