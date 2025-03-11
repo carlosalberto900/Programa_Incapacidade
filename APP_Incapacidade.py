@@ -387,7 +387,7 @@ if 'processo_formatado' in locals():
                 beneficio_concedido = "benefício por incapacidade temporária (auxilio doença), com encaminhamento ao serviço de reabilitação profissional"
 
                 fundamentacao_tipo3 = [
-                (f"Da perícia médica podemos verificar que o perito concluiu que há incapacidade {incapacidade_total_ou_parcial} e {incapacidade_temporaria_ou_permanente}. A perícia, ainda, Fixo a DII em {dii}. {motivo_DII_redigido}"),
+                (f"Da perícia médica podemos verificar que o perito concluiu que há incapacidade {incapacidade_total_ou_parcial} e {incapacidade_temporaria_ou_permanente}. Fixo a DII em {dii}. {motivo_DII_redigido}"),
                 (f"Na DII considerada podemos concluir, sobre a qualidade de segurado e carência:"),
                 (f"Qualidade de segurado - {qualidade}"),
                 (f"Carência - {carencia}"),
