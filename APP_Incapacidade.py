@@ -142,7 +142,7 @@ if 'processo_formatado' in locals():
 
     if resultado == 2:
         motivo = st.radio("Motivo:", [1, 2],
-                        format_func=lambda x: "Ausência de incapacidade" if x == 1 else "Falta qualidade/carência")
+                        format_func=lambda x: "Ausência de incapacidade" if x == 1 else "Falta qualidade de segurado / carência / incapacidade preexistente")
 
         if motivo == 1:
             detalhe = st.radio("Por que não existe incapacidade?", [1, 2],
@@ -150,7 +150,7 @@ if 'processo_formatado' in locals():
             if detalhe == 2:
                 ausencia_incapacidade_redigido = st.text_area("Redija o motivo (será inserido como parágrafo na sentença - iniciar com letra maiúscula e colocar ponto final):")
         else:
-            sem_QS_carencia = st.text_area("Redija o motivo da falta de qualidade/carência (será inserido como parágrafo na sentença - iniciar com letra maiúscula e colocar ponto final):")
+            sem_QS_carencia = st.text_area("Redija o motivo da falta de qualidade de segurado / carência / incapacidade preexistente (será inserido como parágrafo na sentença - iniciar com letra maiúscula e colocar ponto final):")
 
         if st.button("Gerar Improcedência"):
             doc = Document()
