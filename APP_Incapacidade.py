@@ -437,7 +437,7 @@ if 'processo_formatado' in locals():
                     parag.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
                     parag.paragraph_format.first_line_indent = Cm(2)
 
-            st.success("Gerado!")
+            st.success("Sentença gerada com sucesso!")
             with tempfile.NamedTemporaryFile(delete=False, suffix='.docx') as tmp:
                 doc.save(tmp.name)
                 with open(tmp.name, "rb") as f:
