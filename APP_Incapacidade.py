@@ -278,10 +278,10 @@ if 'processo_formatado' in locals():
             motivo_da_DCB_redigido = "Para fixação da DCB foi adotado o prazo de 120 dias a contar da efetiva implantação, na forma do Tema 246 da TNU. O INSS deverá garantir o mínimo de 30 dias de manutenção do benefício, desde a implantação, para viabilizar o pedido administrativo de prorrogação. Compete à parte acompanhar a implantação e prazo para eventual prorrogação."
 
         procedencia_total_parcial = st.radio("Para fins da redação do dispositivo da sentença, a procedência foi total ou parcial?", [1, 2], format_func=lambda x: "Total" if x == 1 else "Parcial")
-            if procedencia_total_parcial == 1:
-                resultado_dispositivo = ""
-            else:
-                resultado_dispositivo = "EM PARTE "
+        if procedencia_total_parcial == 1:
+            resultado_dispositivo = ""
+        else:
+            resultado_dispositivo = "EM PARTE "
                 
         if st.button("Gerar Procedência"):
 
