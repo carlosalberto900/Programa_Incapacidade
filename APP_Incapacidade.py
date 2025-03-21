@@ -122,6 +122,7 @@ def texto_base():
     paragrafo38 = doc.add_paragraph("Feitas essas premissas, passo a analisar o caso concreto.")
     paragrafo38.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
     paragrafo38.paragraph_format.first_line_indent = Cm(2)
+    paragrafo38.bold = True
 
 # Interface gráfica
 st.title("PROGRAMA GERADOR DE SENTENÇAS BENEFÍCIOS POR INCAPACIDADE")
@@ -276,7 +277,12 @@ if 'processo_formatado' in locals():
         else:
             motivo_da_DCB_redigido = "Para fixação da DCB foi adotado o prazo de 120 dias a contar da efetiva implantação, na forma do Tema 246 da TNU. O INSS deverá garantir o mínimo de 30 dias de manutenção do benefício, desde a implantação, para viabilizar o pedido administrativo de prorrogação. Compete à parte acompanhar a implantação e prazo para eventual prorrogação."
 
-
+        procedencia_total_parcial = st.radio("Para fins da redação do dispositivo da sentença, a procedência foi total ou parcial?", [1, 2], format_func=lambda x: "Total" if x == 1 else "Parcial")
+            if procedencia_total_parcial == 1:
+                resultado_dispositivo = ""
+            else:
+                resultado_dispositivo = "EM PARTE "
+                
         if st.button("Gerar Procedência"):
 
             data_atual = datetime.now()
@@ -308,7 +314,7 @@ if 'processo_formatado' in locals():
                         (f"Afasto qualquer necessidade de complementação do laudo, ou necessidade de resposta a novos quesitos. O laudo é claro em sua conclusão, e não há imprecisões que o comprometa ou infirmem suas conclusões. Os peritos deste Juízo são profissionais equidistantes das partes e com habilidades técnicas necessárias para a aferição quanto à existência ou não de incapacidade da parte autora, não há razões para que o laudo médico pericial seja recusado. Ademais, o laudo pericial foi emitido com base no quadro clínico verificado por ocasião da(s) perícia(s) médica(s), através de exames físicos, bem como na história clínica, através dos exames apresentados pela parte autora na data da sua perícia judicial."),
                         (f"Diante do cenário do caso concreto, restando comprovada que a incapacidade laboral da parte autora o benefício que deve ser concedido é o {beneficio_concedido}"),
                         (f"{observacao_sobre_aposentadoria_invalidez}"),
-                        (f"Fixo a DIB em {dib}. {motivo_DIB_redigido}"),
+                        
                 ]
                 for n in fundamentacao1_tipo1:
                     parag = doc.add_paragraph(n)
@@ -321,8 +327,9 @@ if 'processo_formatado' in locals():
                     sum47.paragraph_format.first_line_indent = Cm(2)
                     
                 fundamentacao2_tipo1 = [
-                        (f"Isto posto, com resolução de mérito nos termos do art. 487, I, do CPC, JULGO PROCEDENTE o pedido para conceder o {beneficio_concedido} nos seguintes parâmetros:"),
-                        (f"Benefício {beneficio_concedido}"),
+                        (f"Fixo a DIB em {dib}. {motivo_DIB_redigido}"),    
+                        (f"Isto posto, com resolução de mérito nos termos do art. 487, I, do CPC, JULGO PROCEDENTE {resultado_dispositivo}o pedido para conceder o {beneficio_concedido} nos seguintes parâmetros:"),
+                        (f"Benefício: {beneficio_concedido}"),
                         (f"NB: a ser definida pelo INSS"),
                         (f"DII: {dii}"),
                         (f"DIB: {dib}"),
@@ -361,8 +368,8 @@ if 'processo_formatado' in locals():
                 (f"{observacao_sobre_auxilio_doenca}"),
                 (f"Fixo a DIB em {dib}. {motivo_DIB_redigido}"),
                 (f"{motivo_da_DCB_redigido}"),
-                (f"Isto posto, com resolução de mérito nos termos do art. 487, I, do CPC, JULGO PROCEDENTE o pedido para conceder o {beneficio_concedido} nos seguintes parâmetros:"),
-                (f"Benefício {beneficio_concedido}"),
+                (f"Isto posto, com resolução de mérito nos termos do art. 487, I, do CPC, JULGO PROCEDENTE {resultado_dispositivo}o pedido para conceder o {beneficio_concedido} nos seguintes parâmetros:"),
+                (f"Benefício: {beneficio_concedido}"),
                 (f"NB: a ser definida pelo INSS"),
                 (f"DII: {dii}"),
                 (f"DIB: {dib}"),
@@ -403,8 +410,8 @@ if 'processo_formatado' in locals():
                 (f"O tema 177 da TNU é claro determinar o encaminhamento do segurado incapaz parcialmente para a reabilitação, quando não é o caso de concessão de benefício por incapacidade permanente. É este o caso dos autos."),
                 (f"{por_que_reabilitacao}"),
                 (f"Fixo a DIB em {dib}. {motivo_DIB_redigido}"),
-                (f"Isto posto, com resolução de mérito nos termos do art. 487, I, do CPC, JULGO PROCEDENTE o pedido para conceder o {beneficio_concedido} nos seguintes parâmetros:"),
-                (f"Benefício {beneficio_concedido}"),
+                (f"Isto posto, com resolução de mérito nos termos do art. 487, I, do CPC, JULGO PROCEDENTE {resultado_dispositivo}o pedido para conceder o {beneficio_concedido} nos seguintes parâmetros:"),
+                (f"Benefício: {beneficio_concedido}"),
                 (f"NB: a ser definida pelo INSS"),
                 (f"DII: {dii}"),
                 (f"DIB: {dib}"),
