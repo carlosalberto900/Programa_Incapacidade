@@ -441,7 +441,8 @@ if 'processo_formatado' in locals():
             with tempfile.NamedTemporaryFile(delete=False, suffix='.docx') as tmp:
                 doc.save(tmp.name)
                 with open(tmp.name, "rb") as f:
-                    st.download_button("Download Sentença", f.read(), f"{processo}.docx")
+                if st.download_button("Download Sentença", f.read(), f"{processo}.docx"):
+                    st.rerun()
                     
                    
                     
