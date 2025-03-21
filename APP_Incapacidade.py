@@ -442,4 +442,6 @@ if 'processo_formatado' in locals():
                 doc.save(tmp.name)
                 with open(tmp.name, "rb") as f:
                     st.download_button("Download Sentença", f.read(), f"{processo}.docx")
+                    st.session_state.reset = True
+                    st.experimental_rerun
             
