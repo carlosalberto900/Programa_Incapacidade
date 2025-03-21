@@ -7,6 +7,15 @@ import tempfile
 import platform
 import streamlit as st
 
+# Inicializa a variável de estado no início do script
+if "reset_app" not in st.session_state:
+    st.session_state.reset_app = False
+
+# Se a variável estiver ativada, reinicia o app e reseta a variável
+if st.session_state.reset_app:
+    st.session_state.reset_app = False  # Reseta para evitar loop
+    st.experimental_rerun()
+
 def texto_base():
     paragrafo1 = doc.add_paragraph("Vistos.")
     paragrafo1.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
@@ -441,5 +450,7 @@ if 'processo_formatado' in locals():
             with tempfile.NamedTemporaryFile(delete=False, suffix='.docx') as tmp:
                 doc.save(tmp.name)
                 with open(tmp.name, "rb") as f:
-                    st.download_button("Download Sentença", f.read(), f"{processo}.docx", on_click=lambda: st.experimental_rerun())
+                    st.download_button("Download Sentença", f.read(), f"{processo}.docx")
+                    st.session_state.reset_app = True
+                    st.experimental_rerun()
                     
