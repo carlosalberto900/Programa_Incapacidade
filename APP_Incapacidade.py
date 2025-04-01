@@ -178,6 +178,7 @@ if 'processo_formatado' in locals():
                     det2 = doc.add_paragraph(f"{ausencia_incapacidade_redigido}")
                     det2.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
                     det2.paragraph_format.first_line_indent = Cm(2)
+                    det2.split('\n')
             else:
                 motivo2 = doc.add_paragraph(f"{sem_QS_carencia}")
                 motivo2.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
