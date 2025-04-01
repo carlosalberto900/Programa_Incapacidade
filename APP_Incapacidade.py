@@ -175,10 +175,12 @@ if 'processo_formatado' in locals():
                     parag.paragraph_format.first_line_indent = Cm(2)
                     
                 if detalhe == 2:
-                    det2 = doc.add_paragraph(f"{ausencia_incapacidade_redigido}")
-                    det2.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
-                    det2.paragraph_format.first_line_indent = Cm(2)
-                    det2.split('\n')
+                    for linha in ausencia_incapacidade_redigido.split('\n'):
+                        if linha.strip():
+                            det2 = doc.add_paragraph(linha)
+                            det2.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
+                            det2.paragraph_format.first_line_indent = Cm(2)
+                
             else:
                 motivo2 = doc.add_paragraph(f"{sem_QS_carencia}")
                 motivo2.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
