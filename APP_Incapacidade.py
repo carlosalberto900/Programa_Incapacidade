@@ -182,9 +182,11 @@ if 'processo_formatado' in locals():
                             det2.paragraph_format.first_line_indent = Cm(2)
                 
             else:
-                motivo2 = doc.add_paragraph(f"{sem_QS_carencia}")
-                motivo2.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
-                motivo2.paragraph_format.first_line_indent = Cm(2)
+                for linha in sem_QS_carencia.split('\n'):
+                    if linha.strip():
+                        motivo2 = doc.add_paragraph(linha)
+                        motivo2.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
+                        motivo2.paragraph_format.first_line_indent = Cm(2)
 
             dispositivo_improcedente = [
                             (f"Não cumprido um dos requisitos legais, o pedido é improcedente."),
