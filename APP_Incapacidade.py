@@ -327,9 +327,11 @@ if 'processo_formatado' in locals():
                     parag.paragraph_format.first_line_indent = Cm(2)
                
                 if por_que_concedeu_ap_invalidez == 2:
-                    sum47 = doc.add_paragraph(f"{explicando_sumula_47}")
-                    sum47.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
-                    sum47.paragraph_format.first_line_indent = Cm(2)
+                    for linha in explicando_sumula_47.split('\n'):
+                        if linha.strip():
+                            sum47 = doc.add_paragraph(linha)
+                            sum47.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
+                            sum47.paragraph_format.first_line_indent = Cm(2)
                     
                 fundamentacao2_tipo1 = [
                         (f"Fixo a DIB em {dib}. {motivo_DIB_redigido}"),    
@@ -395,10 +397,11 @@ if 'processo_formatado' in locals():
                 (f"Proceda a Secretaria como necessário."),
                 (f"Int."),
                 ]
-                for n in fundamentacao_tipo2:
-                    parag = doc.add_paragraph(n)
-                    parag.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
-                    parag.paragraph_format.first_line_indent = Cm(2)
+                for n in fundamentacao_tipo2.split('\n'):
+                    if n.strip():
+                        parag = doc.add_paragraph(n)
+                        parag.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
+                        parag.paragraph_format.first_line_indent = Cm(2)
                     
 
             if tipo == 3:
